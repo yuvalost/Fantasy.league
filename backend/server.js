@@ -121,6 +121,41 @@ app.get('/player-gameweek-stats', async (req, res) => {
     }
 });
 
+app.get('/player/:id', async (req, res) => {
+    const playerId = req.params.id;
+
+    try {
+        const playerQuery = `
+            SELECT p.*, t.name AS team_name
+            FROM fpl_players p
+            JOIN fpl_teams t ON p.team_id = t.team_id
+            WHERE p.player_id = $1
+        `;
+        const statsQuery = `
+            SELECT *
+            FROM fpl_player_gameweek_stats
+            WHERE player_id = $1
+            ORDER BY gameweek DESC
+            LIMIT 10
+        `;
+
+        const playerResult = await pool.query(playerQuery, [playerId]);
+        if (playerResult.rows.length === 0) {
+            return res.status(404).json({ error: 'Player not found' });
+        }
+
+        const statsResult = await pool.query(statsQuery, [playerId]);
+
+        const player = playerResult.rows[0];
+        player.stats = statsResult.rows;
+
+        res.json(player);
+    } catch (err) {
+        console.error('Error fetching player:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`FPL API backend running on port ${PORT}`);
