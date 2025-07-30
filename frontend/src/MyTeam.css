@@ -1,0 +1,203 @@
+:root[data-theme='light'] {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --accent-color: #1e40af;
+  --card-bg: #f1f5f9;
+  --button-bg: #e0e7ff;
+  --button-text: #1e3a8a;
+}
+
+:root[data-theme='dark'] {
+  --bg-color: #1e293b;
+  --text-color: #f1f5f9;
+  --accent-color: #facc15;
+  --card-bg: #334155;
+  --button-bg: #475569;
+  --button-text: #facc15;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container,
+.team-card,
+.navbar,
+.nav-link,
+.player-card,
+.fixture-container,
+button,
+h1, h2, h3, h4, h5, h6,
+p, span, td, th {
+  color: var(--text-color);
+}
+
+.container {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+  background-color: var(--card-bg);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 8px;
+}
+
+.nav-link {
+  color: var(--text-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: var(--accent-color);
+}
+
+.team-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--accent-color);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  background-color: var(--button-bg);
+  color: var(--text-color);
+}
+
+.toggle-btn {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background-color: var(--accent-color);
+  color: #000;
+}
+
+.pitch {
+  background: linear-gradient(to bottom, #228B22 50%, #32CD32 50%);
+  padding: 40px 20px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  margin-top: 30px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pitch-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.player-slot {
+  background-color: var(--card-bg);
+  border: 2px dashed var(--accent-color);
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 120px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  backdrop-filter: blur(4px);
+  position: relative;
+}
+
+.player-slot img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+}
+
+.player-slot span {
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.myteam-summary {
+  background-color: var(--card-bg);
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.myteam-summary select,
+.myteam-summary button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+}
+
+.myteam-summary button:hover {
+  background-color: var(--accent-color);
+  color: #000;
+}
+
+.logo-selector {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.logo-selector img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: transform 0.2s, border-color 0.3s;
+}
+
+.logo-selector img:hover {
+  transform: scale(1.1);
+}
+
+.logo-selector img.selected {
+  border-color: var(--accent-color);
+}
