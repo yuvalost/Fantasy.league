@@ -370,3 +370,9 @@ p, span, td, th {
   color: var(--button-text);
   margin-top: auto;
 }
+
+.player-ranking {
+  font-size: 0.9em;
+  color: gold;
+  font-weight: bold;
+}
