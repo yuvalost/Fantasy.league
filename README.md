@@ -1,103 +1,130 @@
-# ⚽ Fantasy Premier League (FPL) Web App  
-Created by **Yuval Ostrowsky (@yuvalost)**
+### 🎯 Fantasy Premier League (FPL) Web App  
+Created by Yuval Ostrowsky (@yuvalost)
 
-This is a full-stack Fantasy Premier League web app that lets users build their dream team, track player stats, view fixtures, and follow the Premier League season interactively. Built with React, Node.js, PostgreSQL, and Express.
+This is a full-stack Fantasy Premier League web app that lets users build their dream team, track player stats, view fixtures, and follow the Premier League season interactively. Built with React, Node.js, PostgreSQL (preferred) or MySQL, and Express.
 
----
+🧠 What This Website Does  
+🌍 Choose a Premier League team and view its players  
+🧩 View detailed player stats and recent gameweek performance  
+📅 Explore upcoming fixtures with color-coded design  
+🧠 Build your own fantasy team in the "My Team" tab  
+📈 Visualize player performance with charts (goals, xG, points)  
+🔐 (Coming soon) Save your team with user login  
+🤖 (Coming soon) AI-driven suggestions for top picks  
 
-## 🧠 What This Website Does
+🔧 Tech Stack  
+Frontend: React, React Router DOM, CSS  
+Backend: Node.js, Express.js  
+Database: PostgreSQL (preferred) or MySQL  
+Visualization: Recharts / Chart.js  
+Authentication (Planned): JWT  
+Other: dotenv, nodemon  
 
-- 🌍 Choose a Premier League team and view its players
-- 🧩 View detailed player stats and recent gameweek performance
-- 📅 Explore upcoming fixtures with color-coded design
-- 🧠 Build your **own fantasy team** in the **"My Team"** tab
-- 📈 Visualize player performance with charts (goals, xG, points)
-- 🔐 (Coming soon) Save your team with user login
-- 🤖 (Coming soon) AI-driven suggestions for top picks
+🌍 Features (Live & Planned)  
+✅ Live Now  
+- Team selection and squad viewing  
+- Player detail view with gameweek stats  
+- Fixtures page with club colors and countdowns  
+- My Team selection (static for now)  
+- Backend APIs connected to PostgreSQL/MySQL  
 
----
+🛠️ In Progress / Planned  
+- 📅 Fixture planner with filtering and matchup highlights  
+- 📊 Stats charts and radar comparisons  
+- 🔐 Save “My Team” with login/auth  
+- 🏆 Leaderboards, transfer news ticker  
+- 🤖 AI-powered pick suggestions  
 
-## 🔧 Tech Stack
+🗂️ Project Structure  
+```
+/frontend
+├── /components
+│   ├── Header.js
+│   ├── PlayerCard.js
+│   ├── SmartSuggestions.js
+│   └── ...
+├── /pages
+│   ├── Home.js
+│   ├── Players.js
+│   ├── PlayerDetail.js
+│   ├── Fixtures.js
+│   └── MyTeam.js
+├── App.js
+├── index.js
+├── AuthContext.js
+├── MyTeam.css
+└── ...
 
-- **Frontend:** React, React Router DOM, CSS
-- **Backend:** Node.js, Express.js
-- **Database:** PostgreSQL
-- **Visualization:** Recharts / Chart.js
-- **Authentication (Planned):** JWT
-- **Other:** dotenv, nodemon
+/backend
+├── server.js
+├── db.js
+├── /routes
+│   ├── auth.js
+│   ├── players.js
+│   ├── teams.js
+│   ├── fixtures.js
+│   └── stats.js
+├── ingestPlayersAndFixtures.js
+├── ingestMySQL.js
+├── setupTables.js
+├── setupTablesmysql.js
+├── scheduler.js
+└── ...
 
----
+/database
+├── schema.sql
+└── ...
 
-## 🌍 Features (Live & Planned)
+.env
+README.md
+package.json
+```
 
-### ✅ Live Now
-- Team selection and squad viewing
-- Player detail view with gameweek stats
-- Fixtures page with club colors and countdowns
-- My Team selection (static for now)
-- Backend APIs connected to PostgreSQL
+🛠️ Environment Setup  
+Create a `.env` file in the `/backend` folder with the following:
 
-### 🛠️ In Progress / Planned
-- ✅ Drag & drop team builder
-- 💰 Budget tracker (£100m limit)
-- 🔍 Player filters (position, team, price, points)
-- 📅 Fixture planner with filtering and matchup highlights
-- 📊 Stats charts and radar comparisons
-- 🔐 Save “My Team” with login/auth
-- 🏆 Leaderboards, transfer news ticker
-- 🤖 AI-powered pick suggestions
-
----
-
-## 🗂️ Project Structure
-
-/frontend  
-├── /components  
-├── App.js  
-├── index.js  
-└── /pages  
-  ├── Home.js  
-  ├── Players.js  
-  ├── PlayerDetail.js  
-  ├── Fixtures.js  
-  └── MyTeam.js  
-
-/backend  
-├── server.js  
-├── /routes  
-└── db.js  
-
-/database  
-└── schema.sql (optional)
-
----
-
-## 🛠️ Environment Setup
-
-You need to create a `.env` file in the backend root with the following:
-
-```env
-DB_DATABASE=fpl_data_db  
-DB_USER=postgres  
-DB_PASSWORD=your_password_here  
-DB_HOST=localhost  
+For PostgreSQL:
+```
+DB_DATABASE=fpl_data_db
+DB_USER=postgres
+DB_PASSWORD=your_password_here
+DB_HOST=localhost
 DB_PORT=5432
 ```
 
----
+For MySQL:
+```
+DB_DATABASE=fpl_data_db
+DB_USER=root
+DB_PASSWORD=your_password_here
+DB_HOST=localhost
+DB_PORT=3306
+```
 
-## 🚀 Getting Started
+📥 Data Ingestion  
+Before starting the app, build the database and populate it with data using one of the following scripts:
 
+- For **PostgreSQL**:  
+```bash
+node ingestPlayersAndFixtures.js
+```
+
+- For **MySQL**:  
+```bash
+node ingestMySQL.js
+```
+
+🚀 Getting Started
 ```bash
 # Clone the repo
 git clone https://github.com/yuvalost/Fantasy.league
 cd Fantasy.league
 
-# Backend
+# Backend setup
 cd backend
 npm install
 
-# Frontend
+# Frontend setup
 cd ../frontend
 npm install
 
@@ -110,15 +137,5 @@ cd ../frontend
 npm start
 ```
 
-Frontend runs at `http://localhost:3000`  
-Backend runs at `http://localhost:5000` or as defined in `.env`
-
----
-
-## 📫 Contact
-
-Created by **Yuval Ostrowsky**  
-GitHub: [@yuvalost](https://github.com/yuvalost)  
-Email: yuvalostrowsky@gmail.com
-
-> 🛠️ This project is in active development — stay tuned for new features!
+Frontend runs at: http://localhost:3000  
+Backend runs at: http://localhost:5000 or as defined in `.env`
